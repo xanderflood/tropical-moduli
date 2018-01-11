@@ -26,6 +26,22 @@ func TestSplitCount(t *testing.T) {
   }
 }
 
+func TestBicolored(t *testing.T) {
+  tests := []struct { s BiSplit; bicolored bool } {
+    {BiSplit{1, 2, 3}, false},
+    {BiSplit{1, 2, 3}, false},
+    {BiSplit{1, 2, 3}, false},
+    {BiSplit{1, 2, 3}, false},
+  }
+
+  for _, test := range tests {
+    if observed := Bicolored(test.s); observed != test.bicolored {
+      t.Fatalf("SplitCount({...}) = %u, want %u",
+        observed, test.bicolored)
+    }
+  }
+}
+
 func TestTrivial(t *testing.T) {
   tests := []struct { s Split; trivial bool } {
     {Split{0, 1}, false},
@@ -42,4 +58,3 @@ func TestTrivial(t *testing.T) {
     }
   }
 }
-
